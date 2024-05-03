@@ -1,0 +1,51 @@
+#include <iostream>
+#include <vector>
+#include <string>
+#include <unordered_set>
+
+// Function to add an address to the airdrop list
+void addAddress(std::unordered_set<std::string>& addresses) {
+    std::string address;
+    std::cout << "Enter the Ethereum address: ";
+    std::cin >> address;
+    addresses.insert(address);
+    std::cout << "Address added successfully.\n";
+}
+
+// Function to check if an address is eligible for an airdrop
+void checkEligibility(const std::unordered_set<std::string>& addresses) {
+    std::string address;
+    std::cout << "Enter the Ethereum address to check: ";
+    std::cin >> address;
+    if (addresses.find(address) != addresses.end()) {
+        std::cout << "This address is eligible for the airdrop.\n";
+    } else {
+        std::cout << "This address is not eligible for the airdrop.\n";
+    }
+}
+
+// Main function to run the program
+int main() {
+    std::unordered_set<std::string> airdropAddresses;
+    int option = 0;
+
+    while (true) {
+        std::cout << "\n1. Add Address\n2. Check Eligibility\n3. Exit\nSelect an option: ";
+        std::cin >> option;
+
+        switch(option) {
+            case 1:
+                addAddress(airdropAddresses);
+                break;
+            case 2:
+                checkEligibility(airdropAddresses);
+                break;
+            case 3:
+                std::cout << "Exiting program.\n";
+                return 0;
+            default:
+                std::cout << "Invalid option. Please try again.\n";
+        }
+    }
+
+    return 0; }
